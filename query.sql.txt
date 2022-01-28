@@ -1,0 +1,26 @@
+USE LIBRARY;
+-- SELECTS ACCOUNT AND PERSONAL CONTACT INFO AS WELL AS BOOK TITLE, AUTHOR, AND CHECKOUT DATE OF THE BOOK CHECKED OUT BY A PERSON
+SELECT l.username, l.date_created, u.name,
+u.phone, b.title as 'Book Title', b.author as 'Author of Book', 
+c.checkout_date as 'Book Checkout Date'
+FROM login_info l 
+JOIN users u ON
+l.person_id = u.person_id
+JOIN checkout_list c ON
+l.username_id = c.username_id
+JOIN book_details b ON
+c.book_ID = b.book_ID
+ORDER by c.checkout_date DESC;
+
+-- SHOWS ACCOUNT INFO OF EVERY PERSON IN SYSTEM
+SELECT 
+l.username, l.date_created, u.name, u.date_of_birth, u.address, u.phone
+FROM login_info l 
+JOIN users u ON
+l.person_id = u.person_id
+ORDER BY l.date_created;
+
+-- SHOWS ALL BOOKS IN SYSTEM SORTED BY PRICE
+SELECT *
+FROM book_details b
+ORDER BY b.price DESC;

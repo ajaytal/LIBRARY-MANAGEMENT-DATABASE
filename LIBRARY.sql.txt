@@ -1,0 +1,60 @@
+CREATE DATABASE LIBRARY;
+USE LIBRARY;
+
+-- SHOWS DETAILS OF BOOKS IN SYSTEM
+create table book_details (
+ book_id int primary key, title varchar(100),
+ author varchar(50), publish_date DATE,
+ price float, in_stock int
+ );
+
+-- HOLDS THE PERSONAL INFROMATION OF PEOPLE IN SYSTEM
+create table users(
+person_id int primary key,
+name varchar(50), date_of_birth DATE, address varchar(100),
+phone varchar(25)
+);
+
+-- ACCOUNT INFORMATION OF USER IN SYSTEM
+create table login_info(
+username_id int primary key, username varchar(30),
+user_password varchar(20), date_created DATE, person_id int
+);
+
+-- LIST OF USERS WHO HAVE CHECKED OUT EACH BOOK IN SYSETM
+create table checkout_list(
+checkout_id int primary key, username_id int,
+book_ID int, checkout_date DATE
+);
+
+insert into book_details values (1, "Harry Potter and the Deathly Hollows", "JK Rowling",
+'2007-07-21', 9.98, 0);
+insert into book_details values (2, "Introduction to Linear Algebra 5th Edition", "Gilbert Strang",
+'2016-01-01', 102.38, 0);
+insert into book_details values (3, "The Lightning Thief", "Rick Riordan",
+'2005-06-28', 5.05, 1);
+insert into book_details values (4, "The Hunger Games", "Suzanne Collins", '2005-06-28', 16.94, 1);
+insert into book_details values (5, "Catching fire", "Suzanne Collins",
+'2013-11-20', 5.65, 0);
+insert into book_details values (6, "Harry Potter and the Goblet of Fire", "JK Rowling", '2000=07-08', 10.99, 1);
+
+insert into users values (1, "John Majin", '2002-01-23', '6123 Ryder St', '918-726-9000');
+insert into users values (2, "Andrew Evans", '1998-07-11', '7185 Horncastle Ave', '846-191-1927');
+insert into users values (3, "Drew Jones", '1992-08-01', '9182 Swans Creek', '618-726-7643');
+insert into users values (4, "Tom Snow", '2000-04-04', '7175 Wiggins St', '111-653-9376');
+insert into users values (5, "Sully Burrow", '1994-12-01', '9182 Waterfalls St', '618-733-7681');
+insert into users values (6, "Brady Jackson", '2001-11-04', '6189 Dragon St', '333-653-9221');
+
+insert into login_info values (1, "djones92", 'thisisabadpassword', '2013-01-25', 3);
+insert into login_info values (2, "evansa", 'cucumber64', '2019-08-15', 2);
+insert into login_info values (3, "maj.john", '49ersarethebest', '2018-06-08', 1);
+insert into login_info values (4, "knights_watch", 'gameofthronesbtw', '2011-03-29', 4);
+insert into login_info values (5, "pats4life", 'buccsarentgood', '2018-01-08', 6);
+insert into login_info values (6, "stark92", 'ranoutofpasswords', '2015-02-28', 5);
+
+insert into checkout_list values (1, 5, 6, '2022-01-25');
+insert into checkout_list values (2, 4, 3, '2021-08-15');
+insert into checkout_list values (3, 6, 2, '2022-01-25');
+insert into checkout_list values (4, 3, 1, '2019-03-29');
+insert into checkout_list values (5, 1, 5, '2018-12-08');
+insert into checkout_list values (6, 2, 4, '2020-01-25');
